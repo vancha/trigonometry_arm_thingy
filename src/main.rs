@@ -41,8 +41,9 @@ async fn main() {
         clear_background(BLACK);//sets the blackground to a solid black color
         let pos = macroquad::input::mouse_position();
         let (a1,a2,d1,d2) = angles(pos.0 as f64, pos.1 as f64);//tries to get the angles of a line pointing towards the mouse cursor.
-        let (x2,y2) = end_loc(d1);//gets the end position of that line
+        let (x2,y2) = end_loc(d1 + d2);//gets the end position of that line
         draw_line(0.0,0.0, x2 as f32,y2 as f32,15.0,BLUE);//draws that line
+        draw_line(x2 as f32,y2 as f32,pos.0 as f32,pos.1 as f32,15.0,BLUE);
         draw_circle(objectpos.0, objectpos.1,15.0, YELLOW);//draws a random circle.. not used yet.
         next_frame().await
     }
